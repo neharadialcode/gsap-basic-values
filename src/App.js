@@ -6,15 +6,17 @@ import Service from "./component/Service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NewArr from "./component/NewArr";
 import Practice from "./component/Practice";
+import NewFile from "./component/NewFile";
 
 function App() {
   return (
     <div className="App">
-      <Hero />
+      {/* <Hero />
       <About />
       <Service />
-      <NewArr />
+      <NewArr /> */}
       <Practice />
+      <NewFile />
     </div>
   );
 }

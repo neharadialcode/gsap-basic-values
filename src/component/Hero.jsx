@@ -26,10 +26,10 @@ const Hero = () => {
             <h1 className="heading">Hello</h1>
             <div className="text_split">
               {newArr.map((obj, i) => (
-                <span key={i}>
+                <span key={i} className="text-nowrap d-inline-block">
                   &nbsp;
                   {obj.map((obj, i) => (
-                    <span key={i} className="text_split_child d-inline-block">
+                    <span key={i} className="text_split_child  d-inline-block">
                       {obj}
                     </span>
                   ))}

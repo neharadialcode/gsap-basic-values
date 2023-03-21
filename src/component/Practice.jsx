@@ -1,42 +1,54 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Practice = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
   useEffect(() => {
-    gsap.from("h1", {
-      xPercent: -100,
-      ease: "bounce",
-      duration: 5,
+    // gsap.from("h1", {
+    //   xPercent: -100,
+    //   ease: "bounce",
+    //   duration: 5,
+    // });
+    // gsap.from("li", {
+    //   yPercent: -100,
+    //   stagger: 0.5,
+    //   duration: 1,
+    //   // repeat: -1,
+
+    //   // yoyo: true,
+    // });
+    const repeatValue = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".value",
+        start: "top 50%",
+        end: "bottom top",
+        markers: true,
+        // scrub: 2,
+        toggleActions: "play none none reverse",
+      },
     });
-    gsap.from("li", {
-      yPercent: -100,
-      stagger: 0.2,
-      duration: 2,
-    });
+    repeatValue.fromTo(
+      "p",
+      {
+        fontSize: "20px",
+        color: "green",
+        duration: 5,
+      },
+      {
+        fontSize: "50px",
+        color: "blue",
+        duration: 5,
+      }
+    );
   }, []);
 
-  const data = [
-    { heading: "one", para: "Hello World", twitterUrl: "zxcvbn" },
-    { heading: "one", para: "Hello World", twitterUrl: "zx dfg sderfgcvbn" },
-    { heading: "one", para: "Hello World", twitterUrl: "zxcvbn" },
-    {
-      heading: "one",
-      para: "Hello World",
-      twitterUrl: "https://www.twitter.com",
-    },
-  ];
   return (
     <div>
-      {data.map((obj, index) => (
-        <div key={index}>
-          <h2>{obj.heading}</h2>
-          <p>{obj.para}</p>
-          <button>READ BUTTON</button>
-          <a href={obj.twitterUrl}>Twitter icon</a>
-        </div>
-      ))}
+      <div className="vh-100 bg-warning"></div>
 
-      <div>
+      <div className="value">
         <h1>Hello World</h1>
         <ul className="d-flex justify-content-center list-unstyled">
           <li className=" font_5xl mx-5 fw-bold">1</li>
@@ -45,10 +57,13 @@ const Practice = () => {
           <li className=" font_5xl mx-5 fw-bold">4</li>
         </ul>
       </div>
-      <div className="vh-100 bg-primary"></div>
-      <div className="vh-100 bg-danger"></div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aut officiis
+        maxime optio eaque hic dolorum molestias ipsam asperiores, voluptatem
+        provident, velit sint fugit fuga impedit. Ullam quidem temporibus
+        fugiat!
+      </p>
       <div className="vh-100 bg-warning"></div>
-      <div className="vh-100 bg-success"></div>
     </div>
   );
 };
